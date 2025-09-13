@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_images.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abkhefif <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abkhefif <abkhefif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 23:34:21 by abkhefif          #+#    #+#             */
-/*   Updated: 2025/01/30 13:13:10 by abkhefif         ###   ########.fr       */
+/*   Updated: 2025/09/13 17:35:56 by abkhefif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	init_player_images(t_game *game, t_images *imgs, char **players_move)
+int	init_player_images(t_game *game, t_images *imgs, char **players_left, char** players_right)
 {
 	int		img_width;
 	int		img_height;
@@ -23,13 +23,30 @@ int	init_player_images(t_game *game, t_images *imgs, char **players_move)
 	i = 0;
 	while (i < 7)
 	{
-		imgs->player[i] = mlx_xpm_file_to_image(game->mlx, players_move[i],
+		imgs->player_move_left[i] = mlx_xpm_file_to_image(game->mlx, players_left[i],
 				&img_width, &img_height);
-		if (!imgs->player[i])
+		if (!imgs->player_move_left[i])
 		{
 			while (j < i)
 			{
-				mlx_destroy_image(game->mlx, imgs->player[j]);
+				mlx_destroy_image(game->mlx, imgs->player_move_left[j]);
+				j++;
+			}
+			return (0);
+		}
+		i++;
+	}
+	i = 0;
+	j = 0;
+	while (i < 7)
+	{
+		imgs->player_move_right[i] = mlx_xpm_file_to_image(game->mlx, players_right[i],
+				&img_width, &img_height);
+		if (!imgs->player_move_right[i])
+		{
+			while (j < i)
+			{
+				mlx_destroy_image(game->mlx, imgs->player_move_right[j]);
 				j++;
 			}
 			return (0);
@@ -117,19 +134,27 @@ int	init_extra_images(t_game *game, t_images *imgs)
 int	init_images(t_game *game, t_images *imgs)
 {
 	char	*chat[5];
-	char	*players_move[7];
+	char	*players_move_left[7];
+	char	*players_move_right[7];
 
-	players_move[0] = "./sprites/move/move.xpm";
-	players_move[1] = "./sprites/move/move(1).xpm";
-	players_move[2] = "./sprites/move/move(2).xpm";
-	players_move[3] = "./sprites/move/move(3).xpm";
-	players_move[4] = "./sprites/move/move(4).xpm";
-	players_move[5] = "./sprites/move/move(5).xpm";
-	players_move[6] = "./sprites/move/move(6).xpm";
+	players_move_left[0] = "./sprites/move/move_left_1.xpm";
+	players_move_left[1] = "./sprites/move/move_left_2.xpm";
+	players_move_left[2] = "./sprites/move/move_left_3.xpm";
+	players_move_left[3] = "./sprites/move/move_left_4.xpm";
+	players_move_left[4] = "./sprites/move/move_left_5.xpm";
+	players_move_left[5] = "./sprites/move/move_left_6.xpm";
+	players_move_left[6] = "./sprites/move/move_left_7.xpm";
+	players_move_right[0] = "./sprites/move/move_right_1.xpm";
+	players_move_right[1] = "./sprites/move/move_right_2.xpm";
+	players_move_right[2] = "./sprites/move/move_right_3.xpm";
+	players_move_right[3] = "./sprites/move/move_right_4.xpm";
+	players_move_right[4] = "./sprites/move/move_right_5.xpm";
+	players_move_right[5] = "./sprites/move/move_right_6.xpm";
+	players_move_right[6] = "./sprites/move/move_right_7.xpm";
 	chat[0] = "./sprites/zafyr/cat.xpm";
 	chat[1] = "./sprites/zafyr/cat(1).xpm";
 	imgs->size = 128;
-	if (!init_player_images(game, imgs, players_move)
+	if (!init_player_images(game, imgs, players_move_right, players_move_left)
 		|| !init_cat_images(game, imgs, chat)
 		|| !init_basic_images(game, imgs) || !init_extra_images(game, imgs))
 		return (0);

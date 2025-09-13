@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abkhefif <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abkhefif <abkhefif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:49:58 by abkhefif          #+#    #+#             */
-/*   Updated: 2025/01/30 12:36:00 by abkhefif         ###   ########.fr       */
+/*   Updated: 2025/09/13 17:34:08 by abkhefif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,20 @@ int	close_window(t_game *game)
 	mlx_loop_hook(game->mlx, NULL, NULL);
 	while (i < 7)
 	{
-		if (game->imgs.player[i])
+		if (game->imgs.player_move_right[i])
 		{
-			mlx_destroy_image(game->mlx, game->imgs.player[i]);
-			game->imgs.player[i] = NULL;
+			mlx_destroy_image(game->mlx, game->imgs.player_move_right[i]);
+			game->imgs.player_move_right[i] = NULL;
+		}
+		i++;
+	}
+	i = 0;
+	while (i < 7)
+	{
+		if (game->imgs.player_move_left[i])
+		{
+			mlx_destroy_image(game->mlx, game->imgs.player_move_left[i]);
+			game->imgs.player_move_left[i] = NULL;
 		}
 		i++;
 	}

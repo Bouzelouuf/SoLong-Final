@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abkhefif <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abkhefif <abkhefif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:27:08 by abkhefif          #+#    #+#             */
-/*   Updated: 2025/01/30 11:47:17 by abkhefif         ###   ########.fr       */
+/*   Updated: 2025/09/13 17:32:58 by abkhefif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ t_game	*init_game(t_Map *map)
 	game->cat_frame = 0;
 	game->camera_x = game->player_x * 128 - (1920 / 2);
 	game->camera_y = game->player_y * 128 - (1152 / 2);
+	game->player_direction = RIGHT;
 	return (game);
 }

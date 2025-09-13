@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abkhefif <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abkhefif <abkhefif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:13:00 by abkhefif          #+#    #+#             */
-/*   Updated: 2025/01/28 11:27:01 by abkhefif         ###   ########.fr       */
+/*   Updated: 2025/09/13 17:40:10 by abkhefif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	move_player(t_game *game, int direction)
 	int		next_y;
 	char	next_cell;
 
+	game->player_direction = direction;
 	next_x = game->player_x;
 	next_y = game->player_y;
 	if (direction == UP)

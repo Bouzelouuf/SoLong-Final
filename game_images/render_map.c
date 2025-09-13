@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abkhefif <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abkhefif <abkhefif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 22:42:23 by abkhefif          #+#    #+#             */
-/*   Updated: 2025/01/30 12:32:34 by abkhefif         ###   ########.fr       */
+/*   Updated: 2025/09/13 17:38:27 by abkhefif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,15 @@ static void	render_animated_objects(t_game *game, t_images *imgs, int x, int y)
 	screen_y = (y * imgs->size) - game->camera_y;
 	if (game->map->grid[y][x] == 'P')
 	{
+		void *current_sprite;
+		if (game->player_direction == LEFT)
+			current_sprite = imgs->player_move_right[game->frame];
+		else if (game->player_direction == RIGHT)
+			current_sprite = imgs->player_move_left[game->frame];
+		else
+			current_sprite = imgs->player_move_right[game->frame];
 		mlx_put_image_to_window(game->mlx, game->window,
-			imgs->player[game->frame], screen_x, screen_y);
+			current_sprite, screen_x, screen_y);
 		game->frame = (game->frame + 1) % 7;
 	}
 	else if (game->map->grid[y][x] == 'Z')

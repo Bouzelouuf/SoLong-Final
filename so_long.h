@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abkhefif <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abkhefif <abkhefif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:44:11 by abkhefif          #+#    #+#             */
-/*   Updated: 2025/02/15 15:36:31 by abkhefif         ###   ########.fr       */
+/*   Updated: 2025/09/13 17:17:02 by abkhefif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ typedef struct s_images
 	void			*plante;
 	void			*lumiere;
 	void			*comode;
-	void			*player[7];
+	void			*player_move_right[7];
+	void			*player_move_left[7];
 	void			*collect;
 	void			*exit;
 	int				size;
@@ -75,6 +76,7 @@ typedef struct s_sprite_sheet
 
 typedef struct s_game
 {
+	int				player_direction;
 	t_Map			*map;
 	int				player_x;
 	int				player_y;
