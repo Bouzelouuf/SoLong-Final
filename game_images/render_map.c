@@ -6,7 +6,7 @@
 /*   By: abkhefif <abkhefif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 22:42:23 by abkhefif          #+#    #+#             */
-/*   Updated: 2025/09/13 17:38:27 by abkhefif         ###   ########.fr       */
+/*   Updated: 2025/09/13 17:59:12 by abkhefif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static void	render_animated_objects(t_game *game, t_images *imgs, int x, int y)
 	{
 		void *current_sprite;
 		if (game->player_direction == LEFT)
-			current_sprite = imgs->player_move_right[game->frame];
-		else if (game->player_direction == RIGHT)
 			current_sprite = imgs->player_move_left[game->frame];
+		else if (game->player_direction == RIGHT)
+			current_sprite = imgs->player_move_right[game->frame];
 		else
 			current_sprite = imgs->player_move_right[game->frame];
 		mlx_put_image_to_window(game->mlx, game->window,

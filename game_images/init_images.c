@@ -6,7 +6,7 @@
 /*   By: abkhefif <abkhefif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 23:34:21 by abkhefif          #+#    #+#             */
-/*   Updated: 2025/09/13 17:35:56 by abkhefif         ###   ########.fr       */
+/*   Updated: 2025/09/13 17:58:01 by abkhefif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ int	init_images(t_game *game, t_images *imgs)
 	players_move_left[4] = "./sprites/move/move_left_5.xpm";
 	players_move_left[5] = "./sprites/move/move_left_6.xpm";
 	players_move_left[6] = "./sprites/move/move_left_7.xpm";
+	
 	players_move_right[0] = "./sprites/move/move_right_1.xpm";
 	players_move_right[1] = "./sprites/move/move_right_2.xpm";
 	players_move_right[2] = "./sprites/move/move_right_3.xpm";
@@ -154,7 +155,7 @@ int	init_images(t_game *game, t_images *imgs)
 	chat[0] = "./sprites/zafyr/cat.xpm";
 	chat[1] = "./sprites/zafyr/cat(1).xpm";
 	imgs->size = 128;
-	if (!init_player_images(game, imgs, players_move_right, players_move_left)
+	if (!init_player_images(game, imgs, players_move_left, players_move_right)
 		|| !init_cat_images(game, imgs, chat)
 		|| !init_basic_images(game, imgs) || !init_extra_images(game, imgs))
 		return (0);
